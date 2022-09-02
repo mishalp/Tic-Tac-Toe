@@ -28,6 +28,43 @@
     margin: 2rem;
 }
 
+.inp{
+    width: 17rem;
+    height: 3rem;
+    font-size: 2rem;
+    border: 1px solid black;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-weight: bold;
+    padding: 5px;
+}
+
+.btn{
+    font-family: sans-serif;
+    font-weight: bold;
+    font-size: 1rem;
+    cursor: pointer;
+    padding: 8px;
+    background-color: aliceblue;
+    border: 1px solid rgba(0, 0, 0, 0.458);
+    border-radius: 10px;
+}
+
+.display-winner{
+    display: flex !important;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.name{
+    font-size: larger;
+    font-weight: bold;
+}
+
+.great{
+    font-weight: bold;
+    font-size: 2rem;
+}
+
 .block{
     background-color: rgb(216, 223, 223);
     height: 8rem;

@@ -1,5 +1,3 @@
-
-
 const GameBoard = (()=>{
     const Players = () => {
         let sign = ""
@@ -17,6 +15,7 @@ const GameBoard = (()=>{
 
     var gameBorad = [' ',' ',' ',' ',' ',' ',' ',' ',' '];
     var blocks = document.querySelectorAll('.block');
+    var display = document.getElementById('gameBoard')
     var clicks = 0;
     const init = ()=>{
         render();
@@ -70,7 +69,51 @@ const GameBoard = (()=>{
     }
 
     const win = (sign)=>{
-        console.log(`${sign} is the winner`);
+        const myTimeout = setTimeout(()=>{
+            alert(`${sign} is the winner`);
+            display.innerHTML = "";
+            displayWinner();
+        }, 100)
+    }
+
+    const displayWinner = ()=>{
+        const input = document.createElement('input');
+        input.setAttribute('type', 'text');
+        input.classList.add('inp');
+        input.setAttribute('id', 'inp')
+        input.required = true
+        const name = document.createElement('p');
+        name.classList.add('name')
+        name.innerHTML = "Enter your Name:"
+        display.classList.add('display-winner')
+        const btn = document.createElement('button')
+        btn.classList.add('btn')
+        btn.innerHTML = "Submit"
+        btn.addEventListener('click', submit)
+
+        display.appendChild(name)
+        display.appendChild(input);
+        display.appendChild(btn)
+    }
+
+    const submit = ()=>{
+        var name = document.getElementById('inp').value;
+        gameBorad.innerHTML = "";
+        const txt = document.createElement('p');
+        txt.classList.add('great');
+        txt.innerHTML = `Congratulations ${name}`
+        const btn = document.createElement('button')
+        btn.classList.add('btn')
+        btn.innerHTML = "Restart"
+        btn.addEventListener('click', restart)
+
+        display.innerHTML = ""
+        display.appendChild(txt)
+        display.appendChild(btn)
+    }
+
+    const restart = ()=>{
+        location.reload()
     }
 
     const clicker = (e)=>{

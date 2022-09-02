@@ -12,6 +12,7 @@ const GameBoard = (()=>{
     playerTwo.sign = 'O';
     
     var playerOneTrue = true;
+    var wins = false
 
     var gameBorad = [' ',' ',' ',' ',' ',' ',' ',' ',' '];
     var blocks = document.querySelectorAll('.block');
@@ -34,12 +35,13 @@ const GameBoard = (()=>{
         })
     }
 
-    const gameController = (sign)=>{
+    const gameController = (sign)=>{;
         if(gameBorad[0] == sign){
             if(gameBorad[1] == sign && gameBorad[2] == sign){
                 win(sign);
             }else if(gameBorad[4] == sign && gameBorad[8] == sign){
                 win(sign);
+                
             }else if(gameBorad[3] == sign && gameBorad[6] == sign){
                 win(sign);
             }
@@ -65,10 +67,14 @@ const GameBoard = (()=>{
             if(gameBorad[7] == sign && gameBorad[8] == sign){
             win(sign);
             }
+        }
+        if(clicks >= 9 && !wins){
+            draw()
         }else return
     }
 
     const win = (sign)=>{
+        wins = true
         const myTimeout = setTimeout(()=>{
             alert(`${sign} is the winner`);
             display.innerHTML = "";
@@ -114,6 +120,20 @@ const GameBoard = (()=>{
 
     const restart = ()=>{
         location.reload()
+    }
+
+    const draw = ()=>{
+        display.innerHTML = "";
+        display.classList.add('display-winner')
+        const txt = document.createElement('p');
+        txt.classList.add('great');
+        txt.innerHTML = 'The game is Draw';
+        const btn = document.createElement('button')
+        btn.classList.add('btn')
+        btn.innerHTML = "Restart"
+        btn.addEventListener('click', restart)
+        display.appendChild(txt)
+        display.appendChild(btn)
     }
 
     const clicker = (e)=>{
